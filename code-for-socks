@@ -1,1 +1,8 @@
+#include <stdio.h>
+typedef struct {
+    int number_of_socks;
+    int question_answer;
+} socks_sorting;
 
+int main() {
+}
