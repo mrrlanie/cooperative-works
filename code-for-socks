@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-typedef struct {
+typedef struct { //структура комбинация - количество носочков
     int combination;
     int number;
 }accordance_combination_number;
@@ -9,7 +9,7 @@ int main() {
     accordance_combination_number coordination [14];
     int counter = 0;
     int digit = 0;
-    int boolean [4] = {0};
+    int boolean [4] = {0}; 
     for (int i = 0; i < 16; ++i) {
         for (int j = 0; j < 4; ++j) {
             if ((counter > 0) && (counter % 2 != 0)) {
