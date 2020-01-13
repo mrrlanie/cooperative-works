@@ -1,17 +1,37 @@
 #include <stdio.h>
+#include <string.h>
+typedef struct {
+    int combination;
+    int number;
+}accordance_combination_number;
 
 int main() {
-    int* answers_and_numbers [55][1];
-    int answer_of_user;
-    for (int i = 0; i < 55; i++){
-        for (int j = 0; j < 1; j++){
-            scanf("%d", &answer_of_user);
-            answers_and_numbers[i][j] = (int *) answer_of_user;
+    accordance_combination_number coordination [14];
+    int counter = 0;
+    int digit = 0;
+    int boolean [4] = {0};
+    for (int i = 0; i < 16; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            if ((counter > 0) && (counter % 2 != 0)) {
+                boolean[j] = 1;
+                counter = counter / 2;
+            }
+            if ((counter > 0) && (counter % 2 == 0)) {
+                boolean[j] = 0;
+                counter = counter / 2;
+            }
         }
-    }
-    for (int k = 0; k < 55; ++k) {
-        for (int i = 0; i < 1; ++i) {
-            printf("%d ", answers_and_numbers[k][i]);
+        for (int k = 0; k < 4; ++k) {
+            int transpond = boolean [k];
+            boolean[k] = boolean [4-k+1];
+            boolean[4-k+1] = transpond;
+
         }
+        for (int i = 0; i < 4; ++i)
+        {
+            digit *= 10;
+            digit += boolean[i];
+        }
+        counter++;
+
     }
-}
