@@ -2,20 +2,20 @@
 #include <string.h>
 typedef struct {
     int combination;
-    int number;
+    int number[4];
 }accordance_combination_number;
 
 typedef struct {
-    int number [16];
+    int number [3][4];
     int number_of_picture;
-} acccordance_number_picture;
+} accordance_number_picture;
 
-int number_of_socks [16] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // на каждый код примера 1111 соотсветствует определенное кол-во носков
+int number_of_socks [16] = {6,3,2,2,2,2,2,2,5,2,2,2,4,3,2,3}; // на каждый код примера 1111 соотсветствует определенное кол-во носков
 
 int main() {
     accordance_combination_number coordination [16]; // массив структур булево число - кол-во носков
-    acccordance_number_picture coordination_2 [54]; // массив структур носок - его номера (всего возможно у 1 носка до 16 номеров)
-    
+    accordance_number_picture coordination_2 [34]; // массив структур носок - его номера (всего возможно у 1 носка до 3-ч номеров (в идеале - до числа комбинаций)
+
     int counter = 0;
     int digit = 0;
     int boolean_invert [4] = {0};
@@ -39,25 +39,18 @@ int main() {
         for (int k = 0; k < 4; ++k) { //инвертация булевых чисел
             boolean[k] = boolean_invert[3 - k];
         }
-
-        if (counter > 0) { //запись чисел булевых чисел в инт
-            for (int i = 0; i < 4; ++i) {
-                digit *= 10;
-                digit += boolean[i];
-            }
+        for (int l = 0; l < 4; ++l) {
+            coordination[l].number[l] = boolean[l];
         }
         counter++;
-        coordination[i].combination = digit;
     }
 
-    
+
     int counter_2 = 1;
-    for (int l = 0; l < 54; ++l) {
+    for (int l = 0; l < 34; ++l) {
         coordination_2[l].number_of_picture = counter_2;
         counter_2++;
     }
-
-
 
     //ввод пользовательских данных
     int user_data = 0;
@@ -72,3 +65,4 @@ int main() {
         //прописать рандомайзер
     }
 }
+
