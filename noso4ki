@@ -4,9 +4,9 @@
 #include <time.h>
 
 int main(){
-    int mass[2][16] = {0};
+    int mass[3][16] = {0};
 /////////////////индексы картинок от 1 до 64//////////////////////
-    for (int i = 1; i < 2; i++){
+    for (int i = 1; i < 3; i++){
         for (int j = 0; j < 16; j++){
             mass[i][j] = mass[i][j-1] + 1;
         }
