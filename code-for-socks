@@ -6,15 +6,25 @@ typedef struct {
 }accordance_combination_number;
 
 typedef struct {
-    int number;
+    int number [16];
     int number_of_picture;
 } acccordance_number_picture;
+
+int number_of_socks [16] = {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}; // на каждый код примера 1111 соотсветствует определенное кол-во носков
+
 int main() {
-    accordance_combination_number coordination [14];
+    accordance_combination_number coordination [16]; // массив структур булево число - кол-во носков
+    acccordance_number_picture coordination_2 [54]; // массив структур носок - его номера (всего возможно у 1 носка до 16 номеров)
+    
     int counter = 0;
     int digit = 0;
     int boolean_invert [4] = {0};
     int boolean[4] = {0};
+
+    for (int n = 0; n < 15; ++n) {
+        coordination[n].number = number_of_socks[n];
+    }
+
     for (int i = 0; i < 16; ++i) {
         for (int j = 0; j < 4; ++j) {
             if ((counter > 0) && (counter % 2 != 0)) {
@@ -26,11 +36,11 @@ int main() {
                 counter = counter / 2;
             }
         }
-        for (int k = 0; k < 4; ++k) {
+        for (int k = 0; k < 4; ++k) { //инвертация булевых чисел
             boolean[k] = boolean_invert[3 - k];
         }
 
-        if (counter > 0) {
+        if (counter > 0) { //запись чисел булевых чисел в инт
             for (int i = 0; i < 4; ++i) {
                 digit *= 10;
                 digit += boolean[i];
@@ -39,18 +49,20 @@ int main() {
         counter++;
         coordination[i].combination = digit;
     }
-    //NEED TO BRING NUMBERS GUYS
-    acccordance_number_picture coordination_2 [54]; //or more
-    //должно быть strcopy с номеров, введенных в 1 структуре, во 2 структуру
+
+    
     int counter_2 = 1;
     for (int l = 0; l < 54; ++l) {
         coordination_2[l].number_of_picture = counter_2;
         counter_2++;
     }
+
+
+
     //ввод пользовательских данных
     int user_data = 0;
     int randomize_number = 0;
-    
+
     scanf("%d", &user_data);
     for (int m = 0; m < 16; ++m) {
         if (user_data == coordination[m].combination){
